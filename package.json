@@ -1,7 +1,7 @@
 {
   "name": "cute-con",
-  "version": "0.1.0",
-  "description": "Experimental piercer stronghold. No tests.",
+  "version": "1.0.0",
+  "description": "console stuff",
   "type": "module",
   "main": "src/index.js",
   "bin": {
@@ -9,8 +9,7 @@
   },
   "scripts": {
     "postinstall": "echo 'Customize this postinstall string in package.json'",
-    "test": "node ./src/test.js",
-    "cli": "node ./src/cli.js"
+    "test": "node ./src/test.js"
   },
   "exports": "./src/index.js",
   "keywords": [
