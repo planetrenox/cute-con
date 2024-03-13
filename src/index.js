@@ -17,8 +17,17 @@ export const _ = (...args) =>
  */
 export const erro = (r) =>
 {
-    detailedErrorLogger(r);
+    console.error(`[error]: ${r.message}\nr Name: ${r.name}\nStack Trace: ${r.stack}`);
+
+    // Log custom r properties that are not part of the standard r object
+    Object.keys(r).forEach(key =>
+    {
+        if (!['name', 'message', 'stack'].includes(key)) {
+            console.log(`Additional Info - ${key}: ${r[key]}`);
+        }
+    });
 };
+
 
 export const ch = {
     iiiiiiiiiiii: () =>
@@ -37,22 +46,4 @@ export const ch = {
 ⠈⠉⠉⠉⠉⠉⠉⠉⠉⠉⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠈⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠉⠉⠉⠉⠉⠉⠉⠉⠉⠁`);
     }
 };
-
-/**
- * Logs detailed information about an error object.
- * @param {Error} error The error object to log.
- * @param {string} context Optional. A description of where the error occurred.
- */
-function detailedErrorLogger(error, context = '')
-{
-    console.error(`[Error${context ? ` in ${context}` : ''}]: ${error.message}\nError Name: ${error.name}\nStack Trace: ${error.stack}`);
-
-    // Log custom error properties that are not part of the standard Error object
-    Object.keys(error).forEach(key =>
-    {
-        if (!['name', 'message', 'stack'].includes(key)) {
-            console.log(`Additional Info - ${key}: ${error[key]}`);
-        }
-    });
-}
 
